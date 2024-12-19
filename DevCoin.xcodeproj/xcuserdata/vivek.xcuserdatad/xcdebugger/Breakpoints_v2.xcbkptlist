@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "65F44782-05D2-4DDB-BDD2-EEA5675F53F2"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F34220CC-7EF5-4A0D-A183-AB18E85D3107"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DevCoin/LaunchScreenViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "titleLabel"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "F34220CC-7EF5-4A0D-A183-AB18E85D3107 - 65a6e3152655947b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; __C.NSTextField in variable initialization expression of DevCoin.LaunchScreenViewController.titleLabel : __C.NSTextField"
+                  moduleName = "DevCoin.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vivek/Xcode-vivek/DevCoin/DevCoin/LaunchScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15">
+               </Location>
+               <Location
+                  uuid = "F34220CC-7EF5-4A0D-A183-AB18E85D3107 - 3831b311dcee8dce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DevCoin.LaunchScreenViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; DevCoin.LaunchScreenViewController"
+                  moduleName = "DevCoin.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vivek/Xcode-vivek/DevCoin/DevCoin/LaunchScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15">
+               </Location>
+               <Location
+                  uuid = "F34220CC-7EF5-4A0D-A183-AB18E85D3107 - 664573616774c67f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DevCoin.LaunchScreenViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;DevCoin.LaunchScreenViewController&gt;"
+                  moduleName = "DevCoin.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vivek/Xcode-vivek/DevCoin/DevCoin/LaunchScreenViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
