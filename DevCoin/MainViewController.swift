@@ -19,12 +19,16 @@ class MainViewController: NSViewController {
         return view
     }()
     
+    private let segmentedControl: NSSegmentedControl = {
+        let control = NSSegmentedControl(labels: ["Home", "About", "Services", "Contact"], trackingMode: .selectOne, target: nil, action: nil)
+        control.selectedSegment = 0
+        return control
+    }()
+    
     private let stackView: NSStackView = {
         let stack = NSStackView()
-        stack.orientation = .horizontal
-        stack.distribution = .equalSpacing
-        stack.alignment = .centerY
-        stack.spacing = 20
+        stack.orientation = .vertical
+        stack.spacing = 0
         return stack
     }()
     
@@ -49,15 +53,11 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        loadWebsite()
+        loadWebsite(for: "Home")
         
-        // Add animation to the navigation bar
-        customNavBar.alphaValue = 0
-        NSAnimationContext.runAnimationGroup({ context in
-            context.duration = 0.8
-            context.timingFunction = CAMediaTimingFunction(name: .easeIn)
-            customNavBar.animator().alphaValue = 1
-        })
+        // Add action for segmented control
+        segmentedControl.target = self
+        segmentedControl.action = #selector(segmentChanged)
     }
     
     private func setupUI() {
@@ -70,6 +70,10 @@ class MainViewController: NSViewController {
         // Setup Navigation Bar
         view.addSubview(customNavBar)
         customNavBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Setup Segmented Control
+        customNavBar.addSubview(segmentedControl)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
         // Setup Stack Views
         customNavBar.addSubview(stackView)
@@ -98,11 +102,16 @@ class MainViewController: NSViewController {
             customNavBar.topAnchor.constraint(equalTo: view.topAnchor),
             customNavBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customNavBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            customNavBar.heightAnchor.constraint(equalToConstant: 50),
+            customNavBar.heightAnchor.constraint(equalToConstant: 100),
             
-            stackView.leadingAnchor.constraint(equalTo: customNavBar.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: customNavBar.trailingAnchor, constant: -20),
-            stackView.centerYAnchor.constraint(equalTo: customNavBar.centerYAnchor),
+            segmentedControl.leadingAnchor.constraint(equalTo: customNavBar.leadingAnchor, constant: 20),
+            segmentedControl.trailingAnchor.constraint(equalTo: customNavBar.trailingAnchor, constant: -20),
+            segmentedControl.topAnchor.constraint(equalTo: customNavBar.topAnchor, constant: 10),
+            
+            stackView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
+            stackView.leadingAnchor.constraint(equalTo: customNavBar.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: customNavBar.trailingAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: 50),
             
             webView.topAnchor.constraint(equalTo: customNavBar.bottomAnchor),
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -111,16 +120,35 @@ class MainViewController: NSViewController {
         ])
     }
     
-    private func loadWebsite() {
-        guard let url = URL(string: "https://www.nstsdc.org/") else { return }
+    private func loadWebsite(for section: String) {
+        let urlString: String
+        switch section {
+        case "Home":
+            urlString = "https://www.nstsdc.org/"
+        case "About":
+            urlString = "https://www.nstsdc.org/about"
+        case "Services":
+            urlString = "https://www.nstsdc.org/services"
+        case "Contact":
+            urlString = "https://www.nstsdc.org/contact"
+        default:
+            urlString = "https://www.nstsdc.org/"
+        }
+        guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
+    }
+    
+    @objc private func segmentChanged() {
+        let selectedSegment = segmentedControl.selectedSegment
+        let section = segmentedControl.label(forSegment: selectedSegment) ?? "Home"
+        loadWebsite(for: section)
     }
     
     // MARK: - Button Actions
     
     @objc private func homePressed() {
-        loadWebsite()
+        loadWebsite(for: "Home")
     }
     
     @objc private func devCoinsPressed() {
